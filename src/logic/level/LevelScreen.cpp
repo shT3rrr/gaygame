@@ -25,10 +25,12 @@ LevelResult LevelScreen::run(int level_number) {
         //} while (command == Command::null);
         LevelResult result = command_controller->process_command(pm, command);
         if (result != LevelResult::null) {
+            render_controller->close();
             return result;
         }
         result = condition_controller->check_conditions(level, player);
         if (result != LevelResult::null) {
+            render_controller->close();
             return result;
         }
     }

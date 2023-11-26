@@ -17,6 +17,7 @@ public:
     ConsoleInputController(std::basic_istream<char> &stream);
 
     Command get_command(const std::map<char, Command> &dict) override;
+
 };
 
 

@@ -52,3 +52,4 @@ void ConsoleRenderController::render(Field *field, const Player &player) {
     ConsoleRenderController::print_level(field, player.get_position());
     std::cout << "Health: " << player.get_health() << "  Score: " << player.get_score() << std::endl;
 }
+

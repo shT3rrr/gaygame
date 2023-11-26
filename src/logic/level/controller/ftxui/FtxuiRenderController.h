@@ -24,6 +24,8 @@ public:
     explicit FtxuiRenderController(ftxui::ScreenInteractive &screen);
 
     void render(Field *field, const Player &player) override;
+    void setup() override;
+    void close() override;
 
     ftxui::Component & root();
 };

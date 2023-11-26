@@ -23,9 +23,9 @@ void FtxuiRenderController::render(Field *field, const Player &player) {
         _loop = std::make_unique<ftxui::Loop>(&_screen, _root);
     }
 
-    _screen.PostEvent(ftxui::Event::Custom);
     _model = std::make_unique<FtxuiRenderModel>(field, player);
-    _loop->RunOnce();
+    _loop->RunOnceBlocking();
+    _screen.PostEvent(ftxui::Event::Custom);
 }
 
 FtxuiRenderController::FtxuiRenderController(ftxui::ScreenInteractive &screen) :
@@ -57,4 +57,13 @@ ftxui::Element FtxuiRenderController::renderInternal() {
                                                    ftxui::emptyElement() | ftxui::flex_grow,
                                            }) | ftxui::flex_grow
                        });
+}
+
+void FtxuiRenderController::setup() {
+    _screen.SetCursor(ftxui::Screen::Cursor{0,0,ftxui::Screen::Cursor::Hidden});
+}
+
+void FtxuiRenderController::close() {
+    _screen.Clear();
+    _loop = nullptr;
 }

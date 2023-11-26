@@ -10,6 +10,8 @@ int MenuScreen::run() {
     int level_number = -1;
     std::string input;
 
+    std::cin.clear();
+
     while(true) {
         std::cout << "Choose the level (0/1)" << '\n';
 
