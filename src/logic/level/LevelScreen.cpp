@@ -16,6 +16,7 @@ LevelResult LevelScreen::run(int level_number) {
 
     PlayerManager pm(player, *level);
 
+    render_controller->setup();
     //render_controller->render(level, player);
     while (true) {
         render_controller->render(level, player);
