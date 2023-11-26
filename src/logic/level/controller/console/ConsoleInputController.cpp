@@ -4,9 +4,9 @@
 
 
 #include <iostream>
-#include "InputController.h"
+#include "ConsoleInputController.h"
 
-Command InputController::get_command(const std::map<char, Command> &dict) {
+Command ConsoleInputController::get_command(const std::map<char, Command> &dict) {
     std::string input;
     while (true) {
         getline(stream, input);
@@ -20,5 +20,5 @@ Command InputController::get_command(const std::map<char, Command> &dict) {
     }
 }
 
-InputController::InputController(std::basic_istream<char> &stream)
+ConsoleInputController::ConsoleInputController(std::basic_istream<char> &stream)
         : stream(stream) {}

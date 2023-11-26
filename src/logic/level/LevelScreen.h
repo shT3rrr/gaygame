@@ -9,21 +9,23 @@
 #include <map>
 #include "CommandEnum.h"
 #include "LevelResultEnum.h"
-#include "src/logic/level/controller/gui/InputController.h"
-#include "src/logic/level/controller/gui/CommandController.h"
-#include "src/logic/level/controller/gui/RenderController.h"
-#include "src/logic/level/controller/gui/ConditionController.h"
+#include "src/logic/level/controller/common/IInputController.h"
+#include "src/logic/level/controller/common/IRenderController.h"
+#include "src/logic/level/controller/common/CommandController.h"
+#include "src/logic/level/controller/common/ConditionController.h"
+#include "src/logic/level/controller/common/IControllerFactory.h"
 
 class LevelScreen {
 public:
     LevelResult run(int level_number);
-    LevelScreen(const std::map<char, Command> &dict, InputController& inputController);
+    LevelScreen(const std::map<char, Command> &dict, IControllerFactory& controllerFactory);
 private:
     const std::map<char, Command>& dict;
-    InputController& input_controller;
-    CommandController command_controller;
-    RenderController render_controller;
-    ConditionController condition_controller;
+
+    std::shared_ptr<IInputController> input_controller;
+    std::shared_ptr<CommandController> command_controller;
+    std::shared_ptr<IRenderController> render_controller;
+    std::shared_ptr<ConditionController> condition_controller;
 };
 
 

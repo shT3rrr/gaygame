@@ -3,13 +3,13 @@
 //
 #include <iostream>
 #include <string>
-#include "RenderController.h"
+#include "ConsoleRenderController.h"
 #include "src/logic/level/event/IncreaseHealth.h"
 #include "src/logic/level/event/IncreaseScore.h"
 #include "src/logic/level/event/ReduceHealth.h"
 #include "src/logic/level/event/TeleportPlayer.h"
 
-void RenderController::print_level(Field* act_field, Vector player_position) {
+void ConsoleRenderController::print_level(Field* act_field, Vector player_position) {
     for (int i = 0; i < act_field->get_heigth(); ++i) {
         for (int j = 0; j < act_field->get_width(); ++j) {
             Vector act_pos(i, j);
@@ -48,7 +48,7 @@ void RenderController::print_level(Field* act_field, Vector player_position) {
     }
 }
 
-void RenderController::render(Field *field, const Player &player) {
-    RenderController::print_level(field, player.get_position());
+void ConsoleRenderController::render(Field *field, const Player &player) {
+    ConsoleRenderController::print_level(field, player.get_position());
     std::cout << "Health: " << player.get_health() << "  Score: " << player.get_score() << std::endl;
 }

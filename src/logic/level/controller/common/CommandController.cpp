@@ -30,7 +30,6 @@ LevelResult CommandController::process_command(
             return LevelResult::CHOOSE_NEW_LEVEL;
         }
         case Command::QUIT: {
-            std::cout << "Do you want to leave?? Uh, okay." << std::endl;
             return LevelResult::EXIT;
         }
         default: {

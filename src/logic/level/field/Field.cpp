@@ -1,5 +1,6 @@
 #include "Field.h"
 #include <stdexcept>
+#include <algorithm>
 
 Field::Field(int new_height, int new_width) {
     if (new_height < 2 || new_width < 2) {
