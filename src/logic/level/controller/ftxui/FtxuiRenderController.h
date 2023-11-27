@@ -18,12 +18,16 @@ private:
     std::unique_ptr<FtxuiRenderModel> _model;
     std::shared_ptr<FtxuiLevelNode> _levelNode = std::make_shared<FtxuiLevelNode>(_model);
 
+    bool _returnToMenuRequested = false;
+    std::chrono::milliseconds _returnToMenu;
+
     ftxui::Element renderInternal();
-    void renderLevel(ftxui::Canvas& canvas);
+    void draw();
 public:
     explicit FtxuiRenderController(ftxui::ScreenInteractive &screen);
 
     void render(Field *field, const Player &player) override;
+    bool renderGameOver(Field *field, const Player &player) override;
     void setup() override;
     void close() override;
 

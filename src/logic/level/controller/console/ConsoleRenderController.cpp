@@ -53,3 +53,17 @@ void ConsoleRenderController::render(Field *field, const Player &player) {
     std::cout << "Health: " << player.get_health() << "  Score: " << player.get_score() << std::endl;
 }
 
+bool ConsoleRenderController::renderGameOver(Field *field, const Player &player) {
+    if (player.get_position().x == field->get_finish().x &&
+        player.get_position().y == field->get_finish().y) {
+        if (player.get_score() == 1000) {
+            std::cout << "Wow, you are cool!" << std::endl;
+        } else {
+            std::cout << "Yay, you won" << std::endl;
+        }
+    }
+    else if (player.get_health() == 0) {
+        std::cout << "Haha, you died" << std::endl;
+    }
+    return true;
+}

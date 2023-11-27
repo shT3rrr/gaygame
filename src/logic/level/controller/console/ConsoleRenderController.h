@@ -14,6 +14,7 @@ private:
     void print_level(Field* act_field, Vector player_position);
 public:
     void render(Field *field, const Player &player) override;
+    bool renderGameOver(Field *field, const Player &player) override;
 };
 
 

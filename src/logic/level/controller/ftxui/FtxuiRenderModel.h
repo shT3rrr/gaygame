@@ -6,8 +6,9 @@
 #include "src/logic/level/field/Field.h"
 
 struct FtxuiRenderModel {
-    FtxuiRenderModel(Field *field, const Player &player);
+    FtxuiRenderModel(bool isGameOver, Field *field, const Player &player);
 
+    bool isGameOver;
     Field *field;
     const Player &player;
 };

@@ -1,4 +1,4 @@
 
 #include "FtxuiRenderModel.h"
 
-FtxuiRenderModel::FtxuiRenderModel(Field *field, const Player &player) : field(field), player(player) {}
+FtxuiRenderModel::FtxuiRenderModel(bool isGameOver, Field *field, const Player &player) : isGameOver(isGameOver), field(field), player(player) {}

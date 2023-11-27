@@ -18,23 +18,30 @@ LevelResult LevelScreen::run(int level_number) {
 
     render_controller->setup();
     //render_controller->render(level, player);
+    LevelResult result = LevelResult::null;
     while (true) {
         render_controller->render(level, player);
 
         Command command = input_controller->get_command(dict);
 
         //} while (command == Command::null);
-        LevelResult result = command_controller->process_command(pm, command);
+        result = command_controller->process_command(pm, command);
         if (result != LevelResult::null) {
-            render_controller->close();
-            return result;
+            break;
         }
         result = condition_controller->check_conditions(level, player);
         if (result != LevelResult::null) {
-            render_controller->close();
-            return result;
+            break;
         }
     }
+
+    while (true) {
+        if (render_controller->renderGameOver(level, player)) {
+            break;
+        }
+    }
+    render_controller->close();
+    return result;
 }
 
 LevelScreen::LevelScreen(const std::map<char, Command> &dict, IControllerFactory &controllerFactory)
