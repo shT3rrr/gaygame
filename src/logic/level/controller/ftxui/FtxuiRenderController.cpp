@@ -116,6 +116,7 @@ ftxui::Element FtxuiRenderController::renderInternal() {
 }
 
 void FtxuiRenderController::setup() {
+    _returnToMenuRequested = false;
     _screen.SetCursor(ftxui::Screen::Cursor{0, 0, ftxui::Screen::Cursor::Hidden});
 }
 
